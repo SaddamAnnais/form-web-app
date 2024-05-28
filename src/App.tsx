@@ -14,10 +14,10 @@ function App() {
   };
 
   return (
-    <VStack className="w-full h-full px-2 py-4 bg-[#001c4d]">
+    <VStack className="w-full h-full px-2 py-4 bg-[#001c4d] items-center">
       <Heading className="text-white pb-4">Request Form</Heading>
-      <Card>
-        <CardBody>
+      <Card className="max-w-screen-lg w-full">
+        <CardBody className="flex flex-col items-center">
           <FormField
             label="Name"
             value={formState.name}
@@ -38,7 +38,11 @@ function App() {
 
           {/* Add more form fields using the FormField component */}
 
-          <Button colorScheme="blue" onClick={handleSubmit}>
+          <Button
+            colorScheme="blue"
+            className="mt-4 w-full max-w-sm"
+            onClick={handleSubmit}
+          >
             Submit
           </Button>
         </CardBody>

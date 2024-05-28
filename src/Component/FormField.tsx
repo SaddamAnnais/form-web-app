@@ -11,7 +11,7 @@ interface FormFieldProps {
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onValidate: (e: ChangeEvent<HTMLInputElement>) => boolean;
-  errorMessage: string
+  errorMessage: string;
 }
 
 export function FormField({
@@ -19,11 +19,11 @@ export function FormField({
   value,
   onChange,
   onValidate,
-  errorMessage
+  errorMessage,
 }: FormFieldProps) {
   const [isError, setIsError] = useState<boolean>(false);
   return (
-    <FormControl isInvalid={isError}>
+    <FormControl isInvalid={isError} className="mt-2">
       <FormLabel>{label}</FormLabel>
       <Input
         type="text"
