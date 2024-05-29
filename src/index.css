@@ -59,9 +59,9 @@ button:focus-visible {
 }
 
 #form-holder {
-  --c: white; /* the border color */
+  --c: #3477ed; /* the border color */
   --b: 10px;    /* the border thickness*/
-  --g: 5px;     /* the gap on hover */
+  --g: -1px;     /* the gap on hover */
   
   padding: calc(var(--g) + var(--b));
   --_g: #0000 25%,var(--c) 0;

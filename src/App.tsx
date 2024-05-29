@@ -33,7 +33,7 @@ function App() {
     <VStack className="w-full h-full px-2 py-4 bg-[#001c4d] items-center" >
       <Heading className="text-white pb-4">Request Form</Heading>
       <Card className="max-w-screen-lg w-full " id="form-holder">
-        <CardBody className="flex flex-col items-center bg-white rounded-md">
+        <CardBody className="flex flex-col items-center bg-white ">
           <FormField
             label="Name"
             value={formState.name}
