@@ -7,6 +7,7 @@ export interface RootState {
   age: number | "";
   dateOfBirth: Date | "";
   portofolio: string;
+  canSubmit: boolean;
 }
 
 // Define the initial state
@@ -18,6 +19,7 @@ const initialState: RootState = {
   age: "",
   dateOfBirth: "",
   portofolio: "",
+  canSubmit: false,
 };
 
 // Define action types
@@ -27,6 +29,7 @@ const UPDATE_AGE = "UPDATE_AGE";
 const UPDATE_EMAIL = "UPDATE_EMAIL";
 const UPDATE_DATE_OF_BIRTH = "UPDATE_DATE_OF_BIRTH";
 const UPDATE_PORTOFOLIO = "UPDATE_PORTOFOLIO";
+const UPDATE_CANSUBMIT = "UPDATE_CANSUBMIT";
 
 // Define action
 export const updateName = (name: string) => ({
@@ -68,9 +71,14 @@ export const updatePortofolio = (portofolio: string) => ({
   payload: portofolio,
 });
 
+export const updateCanSubmit = (canSubmit: boolean) => ({
+  type: UPDATE_CANSUBMIT,
+  payload: canSubmit,
+});
+
 // Define the reducer
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const reducer = (state = initialState, action: any) : RootState=> {
+const reducer = (state = initialState, action: any): RootState => {
   switch (action.type) {
     case UPDATE_NAME:
       return { ...state, name: action.payload };
@@ -83,7 +91,9 @@ const reducer = (state = initialState, action: any) : RootState=> {
     case UPDATE_DATE_OF_BIRTH:
       return { ...state, dateOfBirth: action.payload };
     case UPDATE_PORTOFOLIO:
-      return { ...state, portofolio: action.payload };      
+      return { ...state, portofolio: action.payload };
+    case UPDATE_CANSUBMIT:
+      return { ...state, canSubmit: action.payload };
     default:
       return state;
   }
