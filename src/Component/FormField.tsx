@@ -8,10 +8,11 @@ import { ChangeEvent, useState } from "react";
 
 interface FormFieldProps {
   label: string;
-  value: string;
+  value?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onValidate: (e: ChangeEvent<HTMLInputElement>) => boolean;
   errorMessage: string;
+  type?: string;
 }
 
 export function FormField({
@@ -20,14 +21,16 @@ export function FormField({
   onChange,
   onValidate,
   errorMessage,
+  type,
 }: FormFieldProps) {
   const [isError, setIsError] = useState<boolean>(false);
   return (
     <FormControl isInvalid={isError} className="mt-2">
       <FormLabel>{label}</FormLabel>
       <Input
-        type="text"
+        type={type ? type : "text"}
         value={value}
+        max={type === "date" ? new Date().toISOString().split("T")[0] : ""}
         onChange={(e) => {
           if (!onValidate(e)) {
             setIsError(true);

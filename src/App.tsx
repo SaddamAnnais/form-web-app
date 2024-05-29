@@ -1,8 +1,23 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Card, CardBody, Heading, VStack, Button } from "@chakra-ui/react";
-import { RootState, updateName, updatePhoneNumber } from "./store";
+import {
+  RootState,
+  updateAge,
+  updateDateOfBirth,
+  updateEmail,
+  updateName,
+  updatePhoneNumber,
+  updatePortofolio,
+} from "./store";
 import { FormField } from "./Component/FormField";
-import { validateName, validatePhoneNumber } from "./validation";
+import {
+  validateAge,
+  validateDate,
+  validateEmail,
+  validateLink,
+  validateName,
+  validatePhoneNumber,
+} from "./validation";
 
 function App() {
   // to control the state
@@ -12,6 +27,7 @@ function App() {
   const handleSubmit = () => {
     console.log("Form submitted successfully!");
   };
+  // console.log(formState);
 
   return (
     <VStack className="w-full h-full px-2 py-4 bg-[#001c4d] items-center">
@@ -36,7 +52,36 @@ function App() {
             }
           />
 
-          {/* Add more form fields using the FormField component */}
+          <FormField
+            label="Age"
+            value={formState.age.toString()}
+            onChange={(e) => dispatch(updateAge(e.target.value))}
+            onValidate={validateAge}
+            errorMessage={"Invalid age, should contain numbers and not empty."}
+          />
+
+          <FormField
+            label="Email"
+            value={formState.email}
+            onChange={(e) => dispatch(updateEmail(e.target.value))}
+            onValidate={validateEmail}
+            errorMessage={"Invalid email address."}
+          />
+
+          <FormField
+            label="Date of Birth"
+            onChange={(e) => dispatch(updateDateOfBirth(e.target.value))}
+            onValidate={validateDate}
+            errorMessage={"Invalid date format."}
+            type="date"
+          />
+
+          <FormField
+            label="Portofolio Link"
+            onChange={(e) => dispatch(updatePortofolio(e.target.value))}
+            onValidate={validateLink}
+            errorMessage={"Invalid link format."}
+          />
 
           <Button
             colorScheme="blue"
